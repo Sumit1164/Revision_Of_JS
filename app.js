@@ -17,7 +17,7 @@ student2.__proto__ = student;
 
 
 
-// Class i js
+// Class in js
 
 class Car{
     constructor(brand, mileage) {
@@ -40,3 +40,25 @@ let car1 = new Car("Lamborghini", 7);
 console.log(car1);
 let car2 = new Car("Ferrari", 5);
 console.log(car2);
+
+
+// Inheritance in JS
+class Parent{
+    constructor() {
+        this.species = "Human";
+    }
+    good() {
+        console.log("Hello good morning");
+    }
+}
+class Child extends Parent{
+    constructor() {
+        super();
+        this.name = "Sumit";
+        this.age = 21;
+    }
+    bad() {
+        console.log("Hello bad morning");
+    }
+}
+let child1 = new Child("Computer Science");
