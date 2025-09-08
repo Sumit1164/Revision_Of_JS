@@ -44,7 +44,8 @@ console.log(car2);
 
 // Inheritance in JS
 class Parent{
-    constructor() {
+    constructor(name) {
+        this.name = name;
         this.species = "Human";
     }
     good() {
@@ -52,13 +53,67 @@ class Parent{
     }
 }
 class Child extends Parent{
-    constructor() {
-        super();
-        this.name = "Sumit";
-        this.age = 21;
+    constructor(name) { 
+        super(name);
     }
     bad() {
         console.log("Hello bad morning");
     }
 }
-let child1 = new Child("Computer Science");
+let namObj = new Child("Sumit");
+
+
+// Practice Problem 1
+
+// You are creating a website for your college. Create a class User with properties like name, email. It also has a method called viewData() that allows user to view website data.
+
+let Data = "Secreat Data information";
+class User{
+    constructor(name, email) {
+        this.name = name;
+        this.email = email;
+    }
+    viewData() {
+        console.log("Data viewed by user: ", Data);
+    }
+}
+
+let user1 = new User("Sumit", "sumit@example.com");
+let user2 = new User("Kasu", "kasu@example.com");
+
+let teacher = new User("Mr. Smith", "mrsmith@example.com");
+
+
+// Practice Problem 2
+
+// Create a new class called Admin which inherits from User. Add a new method called editData() to Admin that allows it to edit website data.
+
+class Admin extends User{
+    constructor(name, email) {
+        super(name, email);
+    }
+    editData() {
+        Data = "Data edited by admin";
+    }
+}
+let admin1 = new Admin("Admin", "admin@example.com");
+
+
+
+
+// Error handler in javaScript
+
+let a = 5;
+let b = 7;
+console.log("Sum: ", a + b);
+console.log("Sum: ", a + b);
+console.log("Sum: ", a + b);
+try {
+    console.log("Sum: ", a + k); // error, k is not defined
+} catch (error) {
+    console.error("Error occurred: ", error);
+} // error, k is not defined so it will throw an error and not print the next lines
+console.log("Sum: ", a + b);
+console.log("Sum: ", a + b);
+console.log("Sum: ", a + b);
+console.log("Sum: ", a + b);
