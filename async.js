@@ -1,3 +1,4 @@
+console.log("after 2 seconds hi function will be called");
 function hi() {
     console.log("Hello! How are you?");
 }
