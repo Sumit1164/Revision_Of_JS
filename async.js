@@ -55,26 +55,70 @@ getData(57, () => {
 
 */
 
-const { reject } = require("async");
-
-
 
 // Promises in javascript
 
-let p = new Promise((resolve, reject) => {
-    console.log("Promise is pending");
-    // resolve("Promise is resolved");
-    reject("Promise is rejected");
-});
+// let p = new Promise((resolve, reject) => {
+//     console.log("Promise is pending");
+//     // resolve("Promise is resolved");
+//     reject("Promise is rejected");
+// });
 
 function getData(dataId, getNextData) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            console.log("Data fetched for ID: ", dataId);
-            resolve("Success");
+            // console.log("Data fetched for ID: ", dataId);
+            // resolve("Success");
+            reject("error");
             if (getNextData) {
                 getNextData();
             }
         }, 5000);
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Lightbox functionality
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll("img").forEach((img) => {
+  img.addEventListener("click", () => {
+    lightbox.classList.add("active");
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove("active");
+}
+
+// Optional: Close lightbox on outside click
+lightbox.addEventListener("click", (e) => {
+  if (e.target !== lightboxImg) {
+    closeLightbox();
+  }
+});

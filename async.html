@@ -44,7 +44,6 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-    /* Optional: Lightbox effect for images */
     .lightbox {
       position: fixed;
       top: 0;
@@ -110,8 +109,6 @@
 </head>
 <body>
   <div>
-    <!-- Your Images and Descriptions (unchanged except styling) -->
-    <!-- START IMAGE SECTION -->
 
     <img src="pexels-autorecords-10394772.jpg" alt="White Lamborghini Aventador" />
 <a href="pexels-autorecords-10394772.jpg" download>
@@ -203,7 +200,6 @@
       Raat ke samay ek sheher ka skyline dikh raha hai jahan skyscrapers ki roshni pani mein chhavi banakar ek artistic nazara paida karti hai. CN Tower jaise landmarks aur vibrant colors yeh batate hain ki yeh sheher raat mein bhi kabhi sota nahi hai. Yeh tasveer sheher ki energy aur uski khoobsurti ko ek saath capture karti hai.
     </p>
 
-    <!-- END IMAGE SECTION -->
   </div>
 
   <!-- Lightbox Modal -->
@@ -212,29 +208,5 @@
     <img id="lightbox-img" src="" alt="Expanded View" />
   </div>
 
-  <script>
-    // Lightbox functionality
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    document.querySelectorAll('img').forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.classList.add('active');
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-      });
-    });
-
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-    }
-
-    // Optional: Close lightbox on outside click
-    lightbox.addEventListener('click', (e) => {
-      if (e.target !== lightboxImg) {
-        closeLightbox();
-      }
-    });
-  </script>
 </body>
 </html>
