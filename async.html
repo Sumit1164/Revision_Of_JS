@@ -1,11 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asynchronous Programming</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asynchronous Programming</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+      color: #222;
+    }
+
+    div {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 40px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Optional: Lightbox effect for images */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      display: none;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+
+
+.download-btn:hover {
+  background-color: #444;
+}
+
+.download-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #222;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.circle-download-btn:hover {
+  background-color: #444;
+  transform: scale(1.1);
+}
+
+  </style>
 </head>
 <body>
-    <script src="async.js"></script>
+  <div>
+    <!-- Your Images and Descriptions (unchanged except styling) -->
+    <!-- START IMAGE SECTION -->
+
+    <img src="pexels-autorecords-10394772.jpg" alt="White Lamborghini Aventador" />
+<a href="pexels-autorecords-10394772.jpg" download>
+  <button class="download-btn">⬇️</button>
+</a>
+    <h2>White Lamborghini Aventador 🏎️</h2>
+    <p>
+      Lamborghini Aventador ek aisi supercar hai jo sirf chalane ke liye nahi, balki mehsoos karne ke liye hoti hai. Iski tez katila design, safed shimmery paint aur aggressive front fascia isse sadak par sabse alag banate hain. Performance aur style ka yeh behtareen milaap har car enthusiast ka sapna hai. Jab yeh gaadi chalte hai, toh sirf awaaz nahi karti — yeh ek jazba jagati hai.
+    </p>
+
+    <img src="pexels-dante-juhasz-62201650-11706233.jpg" alt="Grey Lamborghini Huracán STO" />
+<a href="pexels-autorecords-10394772.jpg" download>
+  <button class="download-btn">⬇️</button>
+</a>
+    <h2>Grey Lamborghini Huracán STO 🏎️</h2>
+    <p>
+      Matte grey finish mein dikh raha yeh Lamborghini Huracán STO, ek race track ki taqat aur sheher ki style dono ka perfect fusion hai. Yeh car sirf ek mode of transport nahi, balki ek engineering marvel hai. Har curve, har vent aerodynamics ko samarpit hai. Yeh tasveer is baat ka saboot hai ke performance aur elegance ek saath exist kar sakte hain.
+    </p>
+
+    <img src="pexels-kratz-1363876.jpg" alt="Purple Sunset Over Lake" />
+<a href="pexels-autorecords-10394772.jpg" download>
+  <button class="download-btn">⬇️</button>
+</a>
+    <h2>Purple Sunset Over Lake 🏞️</h2>
+    <p>
+      Iss khoobsurat sunset ne asmaan ko gulabi aur baingani rangon mein rang diya hai, jaise prakriti ne apna canvas khud banaya ho. Paani mein padta reflection aur peeche dikhte pahaadon ka silsila ek sukoon bhari shaam ka ahsaas deta hai. Yeh tasveer un palon ko capture karti hai jab waqt ruk jaata hai aur sirf khamoshi bolti hai.
+    </p>
+
+    <img src="pexels-kyleroxas-2138922.jpg" alt="Lone Tree in Lake with Mountains" />
+<a href="pexels-autorecords-10394772.jpg" download>
+  <button class="download-btn">⬇️</button>
+</a>
+    <h2>Lone Tree in Lake with Mountains 🌄</h2>
+    <p>
+      Ek akela ped, ek shaant jheel, aur peechhe barf se dhake pahaad — yeh sab milkar ek adbhut nazara banate hain. Yeh tasveer sirf prakriti ka roop nahi, balki tanhayi mein bhi khoobsurti dikhane ka ek tareeka hai. Yeh image hume yeh yaad dilati hai ki silence bhi ek language hoti hai — ek aisi zubaan jo seedha dil tak jaati hai.
+    </p>
+
+    <img src="pexels-muffin-1595437.jpg" alt="Bright Lamp Post in Urban Street at Night" />
+<a href="pexels-autorecords-10394772.jpg" download>
+  <button class="download-btn">⬇️</button>
+</a>
+    <h2>Bright Lamp Post in Urban Street at Night 🌃</h2>
+    <p>
+      Ek classic lamp post ke neeche chamakti roshni, aur piche sheher ka soft blur — yeh tasveer ek urban charm lekar aati hai. Is roshni mein ek warmth hai, ek nostalgia jise dekhkar purane zamane ki yaadein taza ho jaati hain. Yeh image sheher ki modernity mein chhupi ek simplicity aur elegance ko capture karti hai.
+    </p>
+
+    <img src="pexels-nikita-volodko-1234519-29527914.jpg" alt="Lamborghini Logo" />
+<a href="pexels-autorecords-10394772.jpg" download>
+  <button class="download-btn">⬇️</button>
+</a>
+    <h2>Lamborghini Logo</h2>
+    <p>
+      Is tasveer mein Lamborghini ka iconic logo nazar aa raha hai, jo luxury aur speed ka pratik hai. Golden bull aur black shield ka combination is brand ki aggressive design aur performance-driven soch ko darshata hai. Ye close-up shot is car ki elegance aur detailed craftsmanship ko ubharta hai.
+    </p>
+
+    <img src="pexels-pixabay-36767.jpg" alt="Akela Ped Aur Khet" />
+<a href="pexels-autorecords-10394772.jpg" download>
+  <button class="download-btn">Download Image</button>
+</a>
+    <h2>Akela Ped Aur Khet 🌾</h2>
+    <p>
+       Yeh tasveer ek akela ped aur uske chaaron taraf harit kheton ko dikhati hai. Upar ek akela badal aur taare bhari raat ka aakash is tasveer ko aur bhi zyada poetic bana deta hai. Yeh image tanhaayi mein bhi sukoon aur khoobsurti dhundhne ki kala ko darshata hai.
+    </p>
+
+    <img src="pexels-pixabay-417173.jpg" alt="Snowy Mountain Peak" />
+<a href="pexels-autorecords-10394772.jpg" download>
+  <button class="download-btn">⬇️</button>
+</a>
+    <h2>Snowy Mountain Peak 🏔️</h2>
+    <p>
+      Is image mein ek barf se dhaka pahaadi shikhar dikh raha hai, jo badalon ke upar uthta hua sa lagta hai. Yeh drishya shakti, thandak aur prakriti ke raw power ka pratinidhitva karta hai. Neeche ke pehadi ilaake aur upar neela aakash is drishya ko aur bhi bhavy banate hain.
+    </p>
+
+    <img src="pexels-souvenirpixels-1519088.jpg" alt="Wooden Pier & Moonlight" />
+<a href="pexels-autorecords-10394772.jpg" download>
+  <button class="download-btn">⬇️</button>
+</a>
+    <h2>Wooden Pier & Moonlight 🌕</h2>
+    <p>
+      Chaandni raat mein ek wooden pier seedha lake ke beech tak jata hai. Pani mein chaand ka prateebimb aur aas-paas ki chhayaen is scene ko ek dreamy, shaant aur thoda sa mysterious bana deti hain. Yeh tasveer man aur vichar dono ko shaant karne wali hai.
+    </p>
+
+    <img src="pexels-souvenirpixels-414612.jpg" alt="Night City Skyline with Reflections" />
+    <a href="pexels-autorecords-10394772.jpg" download>
+  <button class="download-btn">⬇️</button>
+</a>
+    <h2>Night City Skyline with Reflections 🌃</h2>
+    <p>
+      Raat ke samay ek sheher ka skyline dikh raha hai jahan skyscrapers ki roshni pani mein chhavi banakar ek artistic nazara paida karti hai. CN Tower jaise landmarks aur vibrant colors yeh batate hain ki yeh sheher raat mein bhi kabhi sota nahi hai. Yeh tasveer sheher ki energy aur uski khoobsurti ko ek saath capture karti hai.
+    </p>
+
+    <!-- END IMAGE SECTION -->
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="Expanded View" />
+  </div>
+
+  <script>
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+    }
+
+    // Optional: Close lightbox on outside click
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg) {
+        closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>

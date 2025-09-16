@@ -30,7 +30,7 @@ getData(4);
 getData(3);
 
 
-*/
+
 
 
 // Callbacks Hell (Asynchronous)
@@ -50,4 +50,31 @@ getData(57, () => {
             })
         })
     });
-})
+});
+
+
+*/
+
+const { reject } = require("async");
+
+
+
+// Promises in javascript
+
+let p = new Promise((resolve, reject) => {
+    console.log("Promise is pending");
+    // resolve("Promise is resolved");
+    reject("Promise is rejected");
+});
+
+function getData(dataId, getNextData) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Data fetched for ID: ", dataId);
+            resolve("Success");
+            if (getNextData) {
+                getNextData();
+            }
+        }, 5000);
+    });
+}
