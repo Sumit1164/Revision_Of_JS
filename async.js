@@ -59,6 +59,7 @@ getData(57, () => {
 */
 
 
+
                                // Promises in javascript
 
 // let p = new Promise((resolve, reject) => {
@@ -148,15 +149,69 @@ asyncFunc1().then((res) => {
 
 
 
-
+//       Best approach    ->       async await >> Promise chai >> callback hell
 
 // ------------------------> Async Await <-------------------------------------- \\
 
+//Async 
+
+async function hello() {
+  console.log("heloo")
+}
 
 
+///Await 
+
+function api() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("weather data");
+      resolve(200);
+    }, 2000)
+  });
+}
+
+async function getWeatherData() {
+  await api();
+  await api();
+}
 
 
+// Asynv-await
 
+function getData(dataId) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Data fetched for ID: ", dataId);
+      resolve("Success");
+    }, 3000);
+  });
+}
+
+async function getAllData() {
+  console.log("getting data1...");
+  await getData(1);
+  console.log("getting data2...");
+  await getData(2);
+  console.log("getting data3...");
+  await getData(3);
+  console.log("getting data4...");
+  await getData(4);
+}
+
+// -> After run in browser this code we need to call once getAllData(); function, so we don't want to call this function, so we can use 
+// ->  IIFE - (Immediately Invoked Function Expression) IIFE is a function that is called immediately as soon as it is defined. 
+
+(async function(){
+  console.log("getting data1...");
+  await getData(1);
+  console.log("getting data2...");
+  await getData(2);
+  console.log("getting data3...");
+  await getData(3);
+  console.log("getting data4...");
+  await getData(4);
+})();
 
 
 
