@@ -1,8 +1,7 @@
 const BASE_URL = "https://latest.currency-api.pages.dev/v1/currencies/usd.json";
 
-const dropdowns = document.querySelector(".dropdown select");
+const dropdowns = document.querySelectorAll(".dropdown select");
 
-let i =o
 
 for (let select of dropdowns) {
     for (currCode in countryList) {
@@ -16,4 +15,15 @@ for (let select of dropdowns) {
         }
         select.append(newOption);
     }
+    select.addEventListener("change", (evt) => {
+        updateFlag(evt.target);
+    });
+}
+
+const updateFlag = (element) => {
+    let currCode = element.value;
+    let countryCode = countryList[currCode];
+    let newSrc = `https://flagsapi.com/${countryCode}/flat/64.png`;
+    let img = element.parentElement.querySelector("img");
+    img.src = newSrc;
 }
