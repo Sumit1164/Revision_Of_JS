@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter_JS</title>
+</head>
+<body>
+
+<!-- 
+    array.filter(function(element, index, array) {
+       // return true to keep the element
+       element → current element being processed
+       index → index of the current element (optional)
+       array → the whole array (optional)
+       Returns a new array (does not modify the original)
+    });
+ -->
+
+    <h1>Filter in JavaScript</h1>
+    <h6>The <u>filter()</u> method creates a new array containing only the elements that pass a test (condition) provided by a callback function.</h6>
+<h3>Filter numbers greater than 10</h3>
+<script>
+    const numbers = [5, 12, 8, 130, 44];
+    const result = numbers.filter(num => num > 10);
+    document.write("The numbers is: ", numbers +'<br>')
+    document.write("The result is: ",result)
+</script>
+
+<h3>Filter even numbers</h3>
+<script>
+    const nums = [1, 2, 3, 4, 5, 6];
+    const ans = nums.filter(even => even % 2 ===0)
+    document.write("The number is: ",nums +'<br>')
+    document.write("The answer is: ",ans)
+</script>
+
+<h3>Filter strings by length</h3>
+<script>
+    const words = [' apple', ' kiwi', ' banana', ' grape'];
+    const length = words.filter(word => word.length > 5)
+    document.write("The Word is: -  ",words +'<br>')
+    document.write("Strings with more than 4 characters:  -  ",length)
+</script>
+<h3>Filter objects by property</h3>
+<script>
+const users = [
+  { name: 'Alice', age: 17 },
+  { name: 'Bob', age: 20 },
+  { name: 'Charlie', age: 15 }
+];
+const adult = users.filter(user=>user.age >= 18)
+// document.write("The users with age 18 or above: " + JSON.stringify (adult))
+users.forEach(users =>{ document.write(`Name: ${users.name}, Age: ${users.age} <br>`)})
+adult.forEach(user => {
+  document.write(`The users with age 18 or above: -  ${user.name}, Age: ${user.age} <br>`);
+});
+</script>
+<h3>Filter by multiple conditions</h3>
+<script>
+const products = [
+  { name: 'Laptop', price: 1200 },
+  { name: 'Mouse', price: 25 },
+  { name: 'Keyboard', price: 75 },
+  { name: 'Monitor', price: 300 }
+];
+const multi = products.filter(p=>p.price >50 && p.price < 1000)
+document.write(JSON.stringify(multi))
+</script>
+<h3>Using index or array arguments</h3>
+<script>
+    const numberx = [10, 20, 30, 40];
+    const resx = numberx.filter((num, index) => index % 2 === 0);
+    document.write(resx)
+</script>
+<h3>Removing falsy values (cleaning an array)</h3>
+<script>
+    const mixed = [0, 'hello', false, '', 42, null, undefined, 'world'];
+    const falsx = mixed.filter(Boolean)
+    document.write(falsx)
+</script>
+<h3>Filtering unique values</h3>
+<script>
+    const number = [1, 2, 2, 3, 4, 4, 5];
+
+    const unique = number.filter((num, index, arr) => arr.indexOf(num) === index);
+    document.write(unique)
+</script>
+<h3>Filtering based on search text</h3>
+<script>
+const fruits = ['Apple', 'Banana', 'Grapes', 'Mango', 'Orange'];
+const search = 'an';
+
+const results = fruits.filter(fruit =>fruit.includes(search));
+document.write(results);
+</script>
+
+</body>
+</html>
