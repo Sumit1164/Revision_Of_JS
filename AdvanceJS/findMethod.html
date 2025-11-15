@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find_methodJS</title>
+  </head>
+  <body>
+    <!-- Syntax 
+        array.find(callback(element[, index[, array]])[, thisArg])
+
+        callback: A function that is executed on each element in the array until it finds an element that satisfies the condition.
+        element: The current element being processed in the array.
+        index (optional): The index of the current element.
+        array (optional): The array that find() is called on.
+        thisArg (optional): A value to use as this when executing the callback.
+    -->
+    1. Simple example <br />
+    <script>
+      const numbers = [1, 2, 3, 4, 5];
+      const res = numbers.find((number) => number > 3);
+      document.write("Answer: ", res);
+    </script>
+    <br />
+
+    2. Finding an Object in an Array <br />
+    <script>
+      const users = [
+        { id: 1, name: "Alice", age: 25 },
+        { id: 2, name: "Bob", age: 30 },
+        { id: 3, name: "Charlie", age: 35 },
+      ];
+      const result = users.find((numx) => numx.age > 30);
+      document.write("Answer: ", JSON.stringify(result));
+    </script>
+    <br />
+    3. Using Index Parameter <br />
+    <script>
+      const fruits = ["apple", "banana", "orange", "grape"];
+      const finder = fruits.find(
+        (fruit, index) => index > 1 && fruit === "orange"
+      );
+      document.write("Answer: ", finder);
+    </script>
+    <br />
+    4. Case Sensitivity in String Matching <br />
+    <script>
+      const names = ["Alice", "bob", "Charlie", "dave"];
+      const match = names.find((name) => name === "bob");
+      document.write("Answer : ", match);
+    </script>
+    <br />
+    5. No Element Found <br />
+    <script>
+      const numberx = [1, 2, 3, 4, 5];
+
+      const resultx = numberx.find((num) => num > 10);
+      document.write("Answer : ", resultx);
+    </script>
+    <br />
+    6. Find with a Custom this Context <br />
+    <script>
+      const numbersx = [1, 2, 3, 4, 5];
+
+      const context = { threshold: 3 };
+
+      const results = numbersx.find(function (num) {
+        return num > this.threshold;
+      }, context);
+
+      document.write("Answer: ", results);
+    </script>
+    <br />
+    7. Finding an Object in an Array with Multiple Criteria <br />
+    <script>
+      const products = [
+        { id: 1, name: "Laptop", price: 1000 },
+        { id: 2, name: "Phone", price: 900 },
+        { id: 3, name: "Tablet", price: 800 },
+      ];
+
+      const resultsx = products.find(
+        (product) => product.price > 700 && product.name === "Phone"
+      );
+
+      document.write(JSON.stringify(resultsx));
+    </script>
+    <br />
+    8. Finding an Element in a Nested Array <br />
+    <script>
+      const data = [
+        { id: 1, info: { name: "Alice", age: 25 } },
+        { id: 2, info: { name: "Bob", age: 30 } },
+        { id: 3, info: { name: "Charlie", age: 35 } },
+      ];
+
+      const ans = data.find((person) => person.info.name === "Alice");
+
+      document.write(JSON.stringify(ans));
+    </script>
+    <br />
+    9. Using find() with Asynchronous Operations (Promises)
+    <!-- <script> 
+      async function findAsync() {
+        const users = [
+          { id: 1, name: "Alice", age: 25 },
+          { id: 2, name: "Bob", age: 30 },
+          { id: 3, name: "Charlie", age: 35 },
+        ];
+
+        const result = await users.find(async (user) => {
+          // simulate async operation
+          const isAdult = await new Promise((resolve) =>
+            setTimeout(() => resolve(user.age > 30), 100)
+          );
+          return isAdult;
+        });
+
+        console.log(result); // Output: { id: 3, name: 'Charlie', age: 35 }
+      }
+      findAsync();
+    </script>    -->
+
+    <script>
+      async function findAsync() {
+        const users = [
+          { id: 1, name: "Alice", age: 25 },
+          { id: 2, name: "Bob", age: 30 },
+          { id: 3, name: "Charlie", age: 35 },
+        ];
+        for (const user of users) {
+          const isAdult = await new Promise((resolve) =>
+            setTimeout(() => resolve(user.age > 30), 1000)
+          );
+          if (isAdult) return user;
+        }
+      }
+      findAsync().then(console.log);
+    </script>
+
+
+  </body>
+</html>
